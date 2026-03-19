@@ -14,18 +14,12 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()
-
-    # Validation — check all required fields exist
-    required_fields = ['Pregnancies', 'Glucose', 'BloodPressure', 
-                       'SkinThickness', 'Insulin', 'BMI', 
+    required_fields = ['Pregnancies', 'Glucose', 'BloodPressure',
+                       'SkinThickness', 'Insulin', 'BMI',
                        'DiabetesPedigreeFunction', 'Age']
-    
     for field in required_fields:
         if field not in data:
-            return jsonify({
-                'error': f'Missing field: {field}'
-            }), 400
-
+            return jsonify({'error': f'Missing field: {field}'}), 400
     sample = pd.DataFrame([data])
     prediction = model.predict(sample)[0]
     result = 'Has Diabetes' if prediction == 1 else 'No Diabetes'
