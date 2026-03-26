@@ -213,5 +213,3 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-> *"You built the engine in Scikit-Learn. Then you put it in a car and drove it on the internet."*
-> — Claude.ai
